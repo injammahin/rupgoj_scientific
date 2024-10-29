@@ -1,0 +1,26 @@
+{
+  "__commonjsHelpers-725317a4.js": {
+    "file": "assets/_commonjsHelpers-725317a4.js"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-5b311178.css",
+    "isEntry": true,
+    "src": "resources/css/app.css"
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-ca91abd7.js",
+    "imports": [
+      "__commonjsHelpers-725317a4.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/app.js"
+  },
+  "resources/js/ckeditor/ckeditor.js": {
+    "file": "assets/ckeditor-4e66bc36.js",
+    "imports": [
+      "__commonjsHelpers-725317a4.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/ckeditor/ckeditor.js"
+  }
+}
