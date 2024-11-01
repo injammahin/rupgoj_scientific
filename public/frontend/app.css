@@ -485,9 +485,6 @@ a:hover {
     font-size: 2rem;
 }
 
-h1 span {
-    color: var(--base-theme-heading-color) !important;
-}
 
 .counter-box03:before {
     content: "";
@@ -527,15 +524,7 @@ h1 span {
     padding-left: 20px;
 }
 
-.text-white {
-    /* padding: .25rem; */
-}
 
-a {
-    color: var(--bs-red);
-    text-decoration: none;
-    background-color: transparent;
-}
 
 .border-color-light-white {
     border-color: rgba(255, 255, 255, 0.1);
@@ -3339,9 +3328,15 @@ svg {
     color: var(--gray-dark) !important;
     line-height: 1.5rem !important;
 }
-.ambala_paragraph * {
-    font-size: 15px !important;
+.rp_paragraph * {
+    font-size: 17px !important;
+    line-height: 1.8rem !important;
+    text-align: justify !important;
+    font-size: 1rem !important;
+    color: var(--gray-dark) !important;
+    line-height: 1.5rem !important;
 }
+
 .ambala_sub_heading {
     text-align: center;
     font-size: 1rem !important;
@@ -3349,46 +3344,45 @@ svg {
     line-height: 1.6rem !important;
 }
 
-/* .ambala_heading {
-    font-size: 1.5rem !important;
-
-    position: relative !important;
-    font-weight: 600 !important;
-    font-family: 'Poppins', sans-serif !important;
-    color: var(--base-theme-heading-color) !important;
-    
-} */
-.ambala_heading2 {
-    line-height: 35px;
-    color: #000 !important;
+.home h1{
+    font-size: 4rem !important;
     font-weight: 600;
-    background-size: 200% auto;
-    color: #000;
-    background-clip: text;
-    -webkit-background-clip: text;
-    /* animation: animatedTextGradient 2.5s linear infinite; */
-    font-size: 1.3rem !important;
+    line-height: 10rem;
 }
-.ambala_heading {
+.home h2{
+    font-size: 2.5rem !important;
+    font-weight: 500;
+    
+}
+
+.home_heading {
     padding-bottom: 1rem;
-    text-align: center;
-    background-image: linear-gradient(
-        -225deg,
-        #ec1e21 0%,
-        #9b0101 29%,
-        #ec1e21 67%,
-        rgb(128 130 133) 100%
-    );
-    font-weight: 600;
+    text-align: start !important;
+    background-image: linear-gradient(-225deg, #00ac4e 0%, #fff 29%, #00ac4e 67%, rgb(128 130 133) 100%);
+    font-weight: 800;
     background-size: 200% auto;
     color: #000;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: animatedTextGradient 2.5s linear infinite;
+    animation: animatedTextGradient 3s linear infinite;
+    padding-top: 8rem;
     font-size: 1.4rem !important;
+    padding: 8rem;
 }
-
+.rp_heading {
+    padding-bottom: 1rem;
+    text-align: center !important;
+    background-image: linear-gradient(-225deg, #0f4c84 0%, #05ac4e 29%, #0f4c84 67%, rgb(128 130 133) 100%);
+    font-weight: 800;
+    background-size: 200% auto;
+    color: #000;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: animatedTextGradient 3s linear infinite;
+    font-size: 2.5rem !important;
+}
 @keyframes animatedTextGradient {
     0% {
         background-position: 0% center;
@@ -3400,12 +3394,21 @@ svg {
 }
 
 p {
-    text-align: justify;
+    font-size: 17px !important;
+    line-height: 1.8rem !important;
+    text-align: justify !important;
     font-size: 1rem !important;
-    color: var(--base-theme-white-color) !important;
-    line-height: 1.6rem !important;
+    color: var(--gray-dark) !important;
+    line-height: 1.5rem !important;
 }
 
+.service-card {
+    border: 5px solid black !important;
+    height: 20rem !important;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
 .list-style6 li {
     font-size: 1rem !important;
     color: #607d8b !important;
@@ -3818,44 +3821,8 @@ ul a {
     bottom: 0;
     left: 0;
 }
-.service .ambala_heading {
-    padding-bottom: 1rem;
-    text-align: left !important;
-    background-image: linear-gradient(
-        -225deg,
-        #ec1e21 0%,
-        #9b0101 29%,
-        #ec1e21 67%,
-        rgb(128 130 133) 100%
-    );
-    font-weight: 600;
-    background-size: 200% auto;
-    color: #000;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: animatedTextGradient 2.5s linear infinite;
-    font-size: 1.4rem !important;
-}
-.product .ambala_heading {
-    padding-bottom: 1rem;
-    text-align: left !important;
-    background-image: linear-gradient(
-        -225deg,
-        #ec1e21 0%,
-        #9b0101 29%,
-        #ec1e21 67%,
-        rgb(128 130 133) 100%
-    );
-    font-weight: 600;
-    background-size: 200% auto;
-    color: #000;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: animatedTextGradient 2.5s linear infinite;
-    font-size: 1.4rem !important;
-}
+
+
 
 @media (max-width: 768px) {
     .hero-section {
@@ -4260,4 +4227,9 @@ ul a {
 .accordion-body * {
     font-family: "Poppins", sans-serif !important;
     font-size: 15px !important;
+}
+.home_heading{
+    font-size: 15rem !important;
+    text-align: center;
+    color: green !important;
 }

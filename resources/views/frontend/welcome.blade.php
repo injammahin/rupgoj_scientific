@@ -2,117 +2,34 @@
 @section('title', 'Welcome to Ambala IT')
 @section('content')
     <div class=" main-wrapper bg-white">
-        <div>
-                <div class="hero-section shape_rotated mb-1 pb-1 ">
-                    <div class="third-shape"></div>
-                    <div class="fourth-shape"></div>
-                    <div class="container">
-                        <div class="row align-items-center">
-                            <div class="col-lg-6 text-start ">
-                                <h1 class="ambala_heading2">
-                                    Best <span class="ambala_heading"
-                                        style="font-size: 2.1rem !important;padding: 0px;">Software Development</span>
-                                    <span class="highlight-black">Company</span> for the Next
-                                    <span class="highlight-green"> Generation Dreams</span>
-                                </h1>
-                                <div class="font hero-description mt-2">
-                                    @if (isset($video) && $video->video_text)
-                                        {!! $video->video_text !!}
-                                    @else
-                                        <p class="hero-description mt-2"> Default video description goes here.</p>
-                                    @endif
-                                </div>
-                            </div>
-                            @if ($video)
-                                @php
-                                    $embedUrl = str_replace('youtu.be/', 'www.youtube.com/embed/', $video->video_url);
-                                    $embedUrl = str_replace('watch?v=', 'embed/', $embedUrl);
-                                @endphp
-                                <div class="col-lg-6 position-relative">
-                                    <div class="video-container">
-                                        <img src="{{ $video->video_thumbnail ? asset('media/sliders/' . $video->video_thumbnail) : asset('/img/placeholder/Placeholder image.webp') }}"
-                                            alt="Team Working" class="img-fluid video-thumbnail">
-                                        <div class="play-button" onclick="playWelcomeVideo('{{ $embedUrl }}')">
-                                            <i class="fas fa-play"></i>
-                                        </div>
-                                        <div class="experience-badge floating-element floating-2 d-none d-lg-block">
-                                            <span>{{ \Carbon\Carbon::now()->year - 2016 }}+</span>
-                                            <p class="cl-white">Years of Experience</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            @else
-                                <p class="text-center">No video available.</p>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-                <div class="modal fade" id="welcomeVideoModal" tabindex="-1" role="dialog"
-                    aria-labelledby="welcomeVideoModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
-                            <div class="text-center">
-                                <iframe id="welcomeVideoIframe" width="100%" height="500" frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <script>
-                    function playWelcomeVideo(videoUrl) {
-                        const welcomeVideoModal = document.getElementById('welcomeVideoModal');
-                        const welcomeVideoIframe = document.getElementById('welcomeVideoIframe');
-
-                        // Set the video URL with autoplay enabled
-                        welcomeVideoIframe.src = videoUrl + '?autoplay=1';
-
-                        // Show the modal
-                        $('#welcomeVideoModal').modal('show');
-                    }
-
-                    // Clear the video iframe when the modal is closed
-                    $('#welcomeVideoModal').on('hidden.bs.modal', function() {
-                        const welcomeVideoIframe = document.getElementById('welcomeVideoIframe');
-                        welcomeVideoIframe.src = ''; // Clear the src to stop the video
-                    });
-                </script>
-                <script>
-                    function playVideo() {
-                        const videoModal = document.getElementById('videoModal');
-                        const videoIframe = document.getElementById('videoIframe');
-                        const videoUrl = 'https://www.youtube.com/embed/your-video-id'; // Replace with your video URL
-                        videoIframe.src = videoUrl;
-                        videoModal.style.display = 'flex';
-                    }
-
-                    function closeVideo() {
-                        const videoModal = document.getElementById('videoModal');
-                        const videoIframe = document.getElementById('videoIframe');
-                        videoModal.style.display = 'none';
-                        videoIframe.src = ''; // Stop the video when the modal is closed
-                    }
-                </script>
-          
+        <div class="home ">
+            <div><div class="bg-image  home-image" 
+                style="background-image: url('{{asset('/img/home/home-hero-for web.png')}}');
+                       height: 100vh">
+                       <div class="container home_heading">@if (isset($video) && $video->video_text)
+                     {!! $video->video_text !!}
+                    @else
+                        <p class="hero-description mt-2"> Default video description goes here.</p>
+                    @endif</div>
+                </div> 
         </div>
         <div class="container">
            
                 <!-- About Section -->
-                <div class="about top ambala-section " data-aos="fade-up" data-aos-duration="1000">
+                <div class="about top ambala-section" data-aos="fade-up" data-aos-duration="1000">
                     <div>
                         <div class="row align-items-center">
-
+                
                             <!-- Text Column -->
                             <div class="col-lg-6 col-md-12 font">
                                 <div>
                                     <div class="wow fadeInUp" data-wow-delay=".1s">
                                         {{-- <span class="custom_heading">About Ambala IT</span> --}}
                                     </div>
-                                    <h3 class="ambala_heading text-nowrap" style="text-align: left;">We are the next
-                                        generation of the business world. </h3>
+                                    <h3 class="rp_heading text-nowrap" style="text-align: left !important;">Why Choose us</h3>
                                     <!-- Check if 'about_text' is available -->
                                     @if (!empty($aboutContent) && !empty($aboutContent->about_text))
-                                        <div class="ambala_paragraph">
+                                        <div class="rp_paragraph">
                                             {!! $aboutContent->about_text !!}
                                         </div>
                                     @else
@@ -124,168 +41,238 @@
                                     @endif
                                 </div>
                             </div>
-
-                            <!-- Video Column -->
-                            <div class="col-lg-6 col-md-12 pb-5">
-                                <div class="experience-image-wrapper position-relative">
-                                    {{-- <img src="{{ asset('img/home/ambalait-about-us-image-video.webp') }}" alt="home about image"> --}}
-                                    <video autoplay muted loop class="img-fluid">
-                                        <source src="{{ asset('/img/home/ambalait-about-us-homepage-video.mp4') }}"
-                                            type="video/mp4">
-                                        Your browser does not support the video tag.
-                                    </video>
+                
+                            <!-- Image Column -->
+                            <div class="image-column col-md-6 col-sm-12">
+                                <div class="inner-column parallax-image">
+                                    <div class="image">
+                                        <img src="{{ asset('/img/home/about.webp') }}" alt="About Us Image" class="about-img" style="height: 400px !imporrtant;width:auto;">
+                                    </div>
                                 </div>
                             </div>
+                
                         </div>
                     </div>
                 </div>
-             {{-- service section --}}
-             <section class="container pt-3 mb-3">
-                 <h2 class="h3 block-title text-center">What we do<small>Whatever we do, we do with your end user in mind </small></h2>
-                 <div class="row pt-5 mt-30">
-                     <div class="col-lg-4 col-sm-6 mb-30 pb-5">
-                         <a class="card" href="#">
-                             <div class="box-shadow bg-white rounded-circle mx-auto text-center" style="width: 90px; height: 90px; margin-top: -45px;"><i class="fa fa-user fa-3x head-icon"></i></div>
-                             <div class="card-body text-center">
-                                 <h3 class="card-title pt-1">UX Prototyping</h3>
-                                 <p class="card-text text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p><span class="text-sm text-uppercase font-weight-bold">Learn More&nbsp;<i class="fe-icon-arrow-right"></i></span>
-                             </div>
-                         </a>
-                     </div>
-                   
-                     <div class="col-lg-4 col-sm-6 mb-30 pb-5">
-                         <a class="card" href="#">
-                             <div class="box-shadow bg-white rounded-circle mx-auto text-center" style="width: 90px; height: 90px; margin-top: -45px;"><i class="fa fa-camera fa-3x head-icon"></i></div>
-                             <div class="card-body text-center">
-                                 <h3 class="card-title pt-1">Usability Testing</h3>
-                                 <p class="card-text text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p><span class="text-sm text-uppercase font-weight-bold">Learn More&nbsp;<i class="fe-icon-arrow-right"></i></span>
-                             </div>
-                         </a>
-                     </div>
-                     <div class="col-lg-4 col-sm-6 mb-30 pb-5">
-                         <a class="card" href="#">
-                             <div class="box-shadow bg-white rounded-circle mx-auto text-center" style="width: 90px; height: 90px; margin-top: -45px;"><i class="fa fa-image fa-3x head-icon"></i></div>
-                             <div class="card-body text-center">
-                                 <h3 class="card-title pt-1">SEO Optimization</h3>
-                                 <p class="card-text text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p><span class="text-sm text-uppercase font-weight-bold">Learn More&nbsp;<i class="fe-icon-arrow-right"></i></span>
-                             </div>
-                         </a>
-                     </div>
-                 </div>
-             </section>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                   const observerOptions = {
+                       threshold: 0.1
+                   };
+               
+                   const fadeInObserver = new IntersectionObserver((entries) => {
+                       entries.forEach(entry => {
+                           if (entry.isIntersecting) {
+                               entry.target.classList.add('visible');
+                           } else {
+                               entry.target.classList.remove('visible');
+                           }
+                       });
+                   }, observerOptions);
+               
+                   const contentColumn = document.querySelector('.fade-in-left');
+                   const imageColumn = document.querySelector('.parallax-image');
+               
+                   if (contentColumn) {
+                       fadeInObserver.observe(contentColumn);
+                   }
+               
+                   if (imageColumn) {
+                       fadeInObserver.observe(imageColumn);
+                   }
+               
+                   // Parallax effect for the image
+                   window.addEventListener('scroll', function () {
+                       const scrollY = window.scrollY || window.pageYOffset;
+                       const image = document.querySelector('.parallax-image img');
+               
+                       if (image) {
+                           const parallaxFactor = 0.1; // Adjust this to make the effect stronger or weaker.
+                           image.style.transform = `translateY(${scrollY * parallaxFactor}px)`;
+                       }
+                   });
+                   });
+                </script>
              <style>
-                .card::after {
-                    display: block;
-                    position: absolute;
-                    bottom: -10px;
-                    left: 20px;
-                    width: calc(100% - 40px);
-                    height: 35px;
-                    background-color: #fff;
-                    -webkit-box-shadow: 0 19px 28px 5px rgba(64,64,64,0.09);
-                    box-shadow: 0 19px 28px 5px rgba(64,64,64,0.09);
-                    content: '';
-                    z-index: -1;
-                }
-                a.card {
-                    text-decoration: none;
-                }
-                
-                .card {
-                    position: relative;
-                    border: 0;
-                    border-radius: 0;
-                    background-color: #fff;
-                    -webkit-box-shadow: 0 12px 20px 1px rgba(64,64,64,0.09);
-                    box-shadow: 0 12px 20px 1px rgba(64,64,64,0.09);
-                }
-                
-                .card {
-                    position: relative;
-                    display: -webkit-box;
-                    display: -ms-flexbox;
-                    display: flex;
-                    -webkit-box-orient: vertical;
-                    -webkit-box-direction: normal;
-                    -ms-flex-direction: column;
-                    flex-direction: column;
-                    min-width: 0;
-                    word-wrap: break-word;
-                    background-color: #fff;
-                    background-clip: border-box;
-                    border: 1px solid rgba(0,0,0,0.125);
-                    border-radius: .25rem;
-                }
-                
-                .box-shadow {
-                    -webkit-box-shadow: 0 12px 20px 1px rgba(64,64,64,0.09) !important;
-                    box-shadow: 0 12px 20px 1px rgba(64,64,64,0.09) !important;
-                }
-                
-                .ml-auto, .mx-auto {
-                    margin-left: auto !important;
-                }
-                .mr-auto, .mx-auto {
-                    margin-right: auto !important;
-                }
-                .rounded-circle {
-                    border-radius: 50% !important;
-                }
-                .bg-white {
-                    background-color: #fff !important;
-                }
-                
-                .ml-auto, .mx-auto {
-                    margin-left: auto !important;
-                }
-                
-                .mr-auto, .mx-auto {
-                    margin-right: auto !important;
-                }
-                .d-block {
-                    display: block !important;
-                }
-                img, figure {
-                    max-width: 100%;
-                    height: auto;
-                    vertical-align: middle;
-                }
-                
-                .card-text {
-                    padding-top: 12px;
-                    color: #8c8c8c;
-                }
-                
-                .text-sm {
-                    font-size: 12px !important;
-                }
-                p, .p {
-                    margin: 0 0 16px;
-                }
-                
-                .card-title {
-                    margin: 0;
-                    font-family: "Montserrat",sans-serif;
-                    font-size: 18px;
-                    font-weight: 900;
-                }
-                
-                .pt-1, .py-1 {
-                    padding-top: .25rem !important;
-                }
-                
-                .head-icon{
-                    margin-top:18px;
-                    color:#FF4500
-                }
-            </style>
-           {{-- service section --}}
-           <h1 class="ambala_heading">our searvices</h1>
+                   /* Styling for Section Title with Underline */
+                   .services-section h2 {
+                       font-size: 2.5rem;
+                       font-weight: bold;
+                       color: #123456;
+                       position: relative;
+                       margin-bottom: 1rem;
+                       text-transform: uppercase;
+                   }
+           
+                   .services-section h2::after {
+                       content: '';
+                       display: block;
+                       width: 50px;
+                       height: 3px;
+                       background-color: #123456; /* Blue underline */
+                       margin: 0.5rem auto;
+                   }
+           
+                   /* Card styling */
+                   .service-card {
+                       border: 5px solid black;
+                       background: #f7f7f7;
+                       border-radius: 10px;
+                       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                       transition: transform 0.3s ease, box-shadow 0.3s ease;
+                       min-height: 28rem;
+                       overflow: hidden;
+                       position: relative;
+                   }
+           
+                   .service-card:hover {
+                       transform: translateY(-10px);
+                       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+                   }
+           
+                   /* Icon styling */
+                   .icon-wrapper {
+                       width: 90px;
+                       height: 90px;
+                       background-color: #98c1d9;
+                       border-radius: 50%;
+                       display: flex;
+                       align-items: center;
+                       justify-content: center;
+                       color: #ffffff;
+                       font-size: 2rem;
+                       position: absolute;
+                       top: -80px;
+                       left: 34%;
+                       transform: translateX(-50%);
+                       transition: transform 0.3s ease-out;
+                   }
+           
+                   /* Headline styling */
+                   .card-title {
+                       color: #123456;
+                       font-size: 1.25rem;
+                       font-weight: bold;
+                       margin-top: 60px; /* Space for the icon */
+                   }
+           
+                   /* Fade-in animation for cards */
+                   .fade-in {
+                       opacity: 0;
+                       transform: translateY(30px);
+                       transition: opacity 1s ease, transform 1s ease;
+                   }
+           
+                   .fade-in.visible {
+                       opacity: 1;
+                       transform: translateY(0);
+                   }
+           
+                   /* Slide animations */
+                   .fade-in-left {
+                       transform: translateX(-30px);
+                   }
+           
+                   .fade-in-right {
+                       transform: translateX(30px);
+                   }
+           
+                   .fade-in-down {
+                       transform: translateY(30px);
+                   }
+           
+                   /* Additional style for parallax effect */
+                   .parallax-icon {
+                       transition: transform 0.3s ease-out;
+                   }
+                   .services-section  .card-title {
+                       color: #123456 !important;
+                       font-size: 1.25rem;
+                       font-weight: bold;
+                    margin-top: 7rem;
+                    }
+                    .services-section p {
+                     margin: 13px 0 14px !important;
+                     }
+             </style>
+           <section class="container pt-3 mb-3 services-section">
+               <h2 class="rp_heading text-center">Our Services</h2>
+               <div class="row pt-5 mt-3">
+                   <!-- Card 1 - Slide from Left -->
+                   <div class="col-lg-4 col-sm-6 mb-4 fade-in fade-in-left">
+                       <div class="service-card p-4 text-center">
+                           <div class="icon-wrapper parallax-icon">
+                               <i class="fas fa-user-cog"></i>
+                           </div>
+                           <div class="card-body">
+                               <h3 class="card-title">Technical Support</h3>
+                               <p>Our technical team can be contacted round the clock. RUPGONJ SCIENTIFICS has a team of highly skilled engineers, consultants, and experts to provide technical support.</p>
+                           </div>
+                       </div>
+                   </div>
+                   <!-- Card 2 - Slide from Down -->
+                   <div class="col-lg-4 col-sm-6 mb-4 fade-in fade-in-down">
+                       <div class="service-card p-4 text-center">
+                           <div class="icon-wrapper parallax-icon">
+                               <i class="fas fa-camera"></i>
+                           </div>
+                           <div class="card-body">
+                               <h3 class="card-title">Usability Testing</h3>
+                               <p>
+                                Since the qualities of products are vital to our customers’ success, and also a key determinant of our own success, we are committed to quality in all aspects of our activities. RUPGONJ SCIENTIFICS commitment to supply the highest standards of quality products.</p>
+                           </div>
+                       </div>
+                   </div>
+                   <!-- Card 3 - Slide from Right -->
+                   <div class="col-lg-4 col-sm-6 mb-4 fade-in fade-in-right">
+                       <div class="service-card p-4 text-center">
+                           <div class="icon-wrapper parallax-icon">
+                               <i class="fas fa-chart-line"></i>
+                           </div>
+                           <div class="card-body">
+                               <h3 class="card-title">SEO Optimization</h3>
+                               <p>We don’t sell only products, we also provide a compact solution</p>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </section>
+           <script>
+               document.addEventListener('DOMContentLoaded', function () {
+                   const observerOptions = {
+                       threshold: 0.3 // Trigger the animations when 30% of the element is visible
+                   };
+           
+                   const fadeInObserver = new IntersectionObserver((entries) => {
+                       entries.forEach(entry => {
+                           if (entry.isIntersecting) {
+                               entry.target.classList.add('visible');
+                           } else {
+                               entry.target.classList.remove('visible');
+                           }
+                       });
+                   }, observerOptions);
+           
+                   const fadeInElements = document.querySelectorAll('.fade-in');
+                   fadeInElements.forEach(element => fadeInObserver.observe(element));
+           
+                   // Parallax effect for icons
+                   window.addEventListener('scroll', function () {
+                       const scrollY = window.scrollY || window.pageYOffset;
+                       const parallaxIcons = document.querySelectorAll('.parallax-icon');
+           
+                       parallaxIcons.forEach(icon => {
+                           const parallaxFactor = 0.1; // Adjust this to make the effect stronger or weaker
+                           icon.style.transform = `translateY(${scrollY * parallaxFactor}px)`;
+                       });
+                   });
+               });
+           </script>
             <!-- partner-->
                 <div class="main-section ambala-section" data-aos="fade-left" data-aos-duration="1000">
                     <div>
                         <div class=" text-center mb-5">
-                            <h3 class="ambala_heading ">Our Partners</h3>
+                            <h3 class="rp_heading ">Our Partners</h3>
                             <p class="ambala_sub_heading ">Our trusted partner in driving innovation with cutting-edge
                                 customized
                                 software solutions.

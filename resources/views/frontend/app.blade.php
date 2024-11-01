@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>ambalait | @yield('title')</title>
-    <link rel="shortcut icon" href="{{ asset('img/logos/ambalait-fav-logo.png') }}" alt="Ambala IT Logo" />
+    <title>Rupgonj Scientific | @yield('title')</title>
+    <link rel="shortcut icon" href="{{ asset('/img/logos/rupgonj-fav-icon.svg') }}" alt="rupgonj scientific fav icon" />
     <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/flickity.min.css') }}">
