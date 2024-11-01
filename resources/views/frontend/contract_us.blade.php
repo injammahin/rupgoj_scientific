@@ -151,7 +151,19 @@
                 <!-- end form here -->
             </div>
         </div>
+        
     </section>
+    <div class="map-container mt-4">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3648.762030137773!2d90.3665101145124!3d23.777356393325093!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c7b0bb17e183%3A0x2d6a3931f4b78f07!2sAmbala%20IT!5e0!3m2!1sen!2sbd!4v1630064309324!5m2!1sen!2sbd" 
+            width="100%" 
+            height="400" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy">
+        </iframe>
+    </div>
+
 @endsection
 
 @section('scripts')
@@ -171,10 +183,10 @@
 @endsection
 
 <style>
-    .card-style07 {
-        background: linear-gradient(-45deg, #c1121e23, rgba(19, 20, 20, 0.151)) !important;
-        transition: transform 0.3s ease, background 0.3s ease;
-    }
+   .card-style07 {
+    background: linear-gradient(-45deg, #0161b069, rgb(5 165 81 / 0%)) !important;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
 
     .card-style07:hover {
         background: linear-gradient(-45deg, #c1121e, rgb(19, 20, 20)) !important;

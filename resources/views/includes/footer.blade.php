@@ -1,273 +1,141 @@
-
-
-
-<section id="terms" class="terms dark-background footer_main">
-    <div class="container p-4 footer-top ">
-        <div class="row gy-4 footer-second d-flex align-items-start">
-            <div class="   rounded col-lg-4 col-md-4 footer-links ">
-                <h4><u>Our Latest Products</u></h4>
-                <ul>
-                    @foreach ($latestProducts as $product)
-                        <li class="text-nowrap"><a
-                                href="{{ route('frontend.product.details', $product->slug) }}">{{ $product->name }}</a>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-
-            <div class=" rounded col-lg-4 col-md-4 footer-links">
-                <h4><u>Our Services</u></h4>
-                <ul>
-                    <li><a href="{{ route('frontend.services.digital-transformation') }}">Digital Transformation</a>
-                    </li>
-                    <li><a href="{{ route('frontend.services.uiux-design-agencies') }}">UI/UX Design Services</a></li>
-                    <li><a href="{{ route('frontend.services.api-development') }}">API Development and Integration</a>
-                    </li>
-                    <li><a href="{{ route('frontend.services.mobile-app-development') }}">Mobile App Development</a>
-                    </li>
-                    <li><a href="{{ route('frontend.services.build-ecommerce-websites') }}">E-Commerce Development</a>
-                    </li>
-                </ul>
-            </div>
-
-
-            <div class=" rounded col-lg-3 col-md-3  footer-links">
-                <h4><u>Useful Links</u></h4>
-                <ul>
+<section id="footer" class="terms dark-background footer_main">
+    <div class="container p-4 footer-top">
+        <div class="row gy-4 d-flex align-items-start text-white">
+            
+            <!-- Important Links -->
+            <div class="col-lg-4 col-md-6 footer-links">
+                <h4 class="mb-3 text-nowrap">Important Links</h4>
+                <ul class="list-unstyled">
                     <li><a href="{{ route('frontend.home') }}">Home</a></li>
-                    <li><a href="{{ route('frontend.about') }}">About us</a></li>
-                    <li><a href="{{ route('frontend.services') }}">Services</a></li>
-                    <li><a href="{{ route('frontend.terms-of-service') }}">Terms of service</a></li>
-                    <li><a href="{{ route('frontend.privacy-policy') }}">Privacy policy</a></li>
+                    <li><a href="{{ route('frontend.about') }}">Company Profile</a></li>
+                    <li><a href="{{ route('frontend.services') }}">Services & Support</a></li>
+                    <li><a href="{{ route('frontend.contact') }}">Contact Us</a></li>
                 </ul>
             </div>
-            <div class="row justify-content-center col-lg-1 col-md-1">
-                <div class="col-12 text-center p-2">
-                    <div class="d-flex flex-column align-items-center social-icons-container">
-                        @if (isset($main_settings['facebook_url']))
-                            <a href="{{ $main_settings['facebook_url'] }}" class="my-2" target="_blank">
-                                <img src="{{ asset('img/icon/facebook.svg') }}" alt="Facebook" class="social-icon">
-                            </a>
-                        @endif
-                        @if (isset($main_settings['youtube_url']))
-                            <a href="{{ $main_settings['youtube_url'] }}" class="my-2" target="_blank">
-                                <img src="{{ asset('/img/icon/YouTube_play_button.webp') }}" alt="YouTube"
-                                    class="social-icon">
-                            </a>
-                        @endif
-                        @if (isset($main_settings['instagram_url']))
-                            <a href="{{ $main_settings['instagram_url'] }}" class="my-2" target="_blank">
-                                <img src="{{ asset('/img/icon/instagram_logo_button.webp') }}" alt="Instagram"
-                                    class="social-icon">
-                            </a>
-                        @endif
-                        @if (isset($main_settings['linkedin_url']))
-                            <a href="{{ $main_settings['linkedin_url'] }}" class="my-2" target="_blank">
-                                <img src="{{ asset('img/icon/LinkedIn_icon.svg.png') }}" alt="LinkedIn"
-                                    class="social-icon">
-                            </a>
-                        @endif
-                        @if (isset($main_settings['twitter_url']))
-                            <a href="{{ $main_settings['twitter_url'] }}" class="my-2" target="_blank">
-                                <img src="{{ asset('img/icon/twitter.svg') }}" alt="Twitter" class="social-icon">
-                            </a>
-                        @endif
-                    </div>
+
+            <!-- Quick Contact -->
+            <div class="col-lg-4 col-md-6">
+                <h4 class="mb-3">Quick Contact</h4>
+                <p><strong>Phone:</strong><br>+880 1717844659<br>+880 1715019666</p>
+                <p><strong>Email:</strong><br>rupgonjscientifics@gmail.com<br>aftab@rupgonjscientifics.com<br>a.siddique727@gmail.com</p>
+            </div>
+
+            <!-- Address -->
+            <div class="col-lg-4 col-md-6">
+                <h4 class="mb-3">Address</h4>
+                <p><strong>Registered Office:</strong><br>32, Shahid Nazrul Islam Sharak (Hatkhola), Dhaka-1203, Bangladesh.</p>
+                <p><strong>Corporate Office:</strong><br>Zakaria Bhaban (3rd floor), 33/2, Shahid Nazrul Islam Sharak, Dhaka-1203.</p>
+            </div>
+        </div>
+
+        <!-- Social Media Icons -->
+        <div class="row justify-content-center mt-4">
+            <div class="col-12 text-center">
+                <div class="d-flex justify-content-center social-icons-container">
+                    <a href="{{ $main_settings['facebook_url'] ?? '#' }}" target="_blank"><img src="{{ asset('img/icon/facebook.svg') }}" class="social-icon" alt="Facebook"></a>
+                    <a href="{{ $main_settings['youtube_url'] ?? '#' }}" target="_blank"><img src="{{ asset('img/icon/YouTube_play_button.webp') }}" class="social-icon" alt="YouTube"></a>
+                    <a href="{{ $main_settings['instagram_url'] ?? '#' }}" target="_blank"><img src="{{ asset('img/icon/instagram_logo_button.webp') }}" class="social-icon" alt="Instagram"></a>
+                    <a href="{{ $main_settings['linkedin_url'] ?? '#' }}" target="_blank"><img src="{{ asset('img/icon/LinkedIn_icon.svg.png') }}" class="social-icon" alt="LinkedIn"></a>
+                    <a href="{{ $main_settings['twitter_url'] ?? '#' }}" target="_blank"><img src="{{ asset('img/icon/twitter.svg') }}" class="social-icon" alt="Twitter"></a>
                 </div>
             </div>
         </div>
     </div>
 
-
-
     <!-- Copyright Section -->
-    <div class=" center copyright text-center mt-0 mb-0">
-        <p style=" center   font-size: .9rem !important;text-align:center!important;">© <span>Copyright</span> <span
-                class="px-1 sitename">{{ $main_settings['site_name'] ?? 'Your Website Name' }}</span>
-            <span>All
-                Rights
-                Reserved</span>
-        </p>
+    <div class="copyright text-center center mt-4 text-white">
+        <p>© 2021 All rights reserved by Rupgonj Scientifics. Designed & Developed by <span style="color: #FF4081 !important;">WebArc Bangladesh Limited</span>.</p>
     </div>
 </section>
 
-
-
+<!-- Footer Styles -->
 <style>
-    .background-img {
-        background-image: url("{{ asset('img/map/location-map-ambala-it-ltd.webp') }}") !important;
-        padding-top: 0px;
-        margin-top: 0px;
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-        position: relative;
-        padding: 116px !important;
+    /* Main Footer Styling */
+    #footer {
+        background-color: #0b3357 !important; /* Dark Blue */
+        color: #ffffff !important;
+        padding-top: 2rem;
     }
 
-    .footer-text {
-        margin: 0;
-        padding: 0;
-        width: 100%;
+    /* Headings */
+    #footer h4 {
+        color: #ffffff !important;
+        font-weight: bold !important;
+        border-bottom: 2px solid #ffffff !important;
+        padding-bottom: 0.3rem !important;
+        margin-bottom: 1rem !important;
+    }
+     #footer h4 {
+        color: #ffffff !important;
+        font-weight: bold !important;
+        border-bottom: 2px solid #ffffff !important;
+        padding-bottom: 0.3rem !important;
+        margin-bottom: 1rem !important;
+    }
+    #footer strong {
+        color: #ffffff !important;
+        font-weight: bold !important;
+        border-bottom: 2px solid #ffffff !important;
+        padding-bottom: 0.3rem !important;
     }
 
-    .london,
-    .dhaka,
-    .ghana {
-
-        background-color: rgba(0, 0, 0, 0.6);
-        padding: 15px;
-        /* border-radius: 8px; */
-        white-space: nowrap;
-        margin: 0;
+    /* Paragraph and Link Styling */
+    #footer p,
+    #footer a {
+        color: #ffffff !important;
+        font-size: 0.9rem !important;
+        margin: 0 !important;
+        line-height: 1.8 !important;
     }
 
-    .london {
-        padding-left: 10px !important;
-        padding-top: 14rem !important;
-        padding-bottom: 1rem !important;
-        left: 0;
-        z-index: 2;
+    #footer a:hover {
+        color: #FF4081 !important; /* Highlight color on hover */
+        text-decoration: none !important;
     }
 
-    .ghana {
-        padding-top: 14rem !important;
-        padding-bottom: 1rem !important;
-        right: 0;
+    /* Footer Links Styling */
+    .footer-links ul {
+        list-style: none !important;
+        padding: 0 !important;
     }
 
-    .dhaka {
-        padding-bottom: 13rem !important;
-        right: 0;
-        z-index: 1;
+    .footer-links li {
+        margin-bottom: 0.5rem !important;
     }
 
-    .double-underline {
-        position: relative;
-        display: inline-block;
-    }
-
-    .double-underline:after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: -5px;
-        /* Adjust this value to position the second underline */
-        width: 100%;
-        height: 2px;
-        /* Adjust thickness */
-        border-bottom: 2px double #fff;
-        /* Double underline */
-    }
-
-    @media (max-width: 992px) {
-
-        .london,
-        .dhaka,
-        .ghana {
-            padding-top: 8rem !important;
-            padding-bottom: 1rem !important;
-            margin: 0 auto;
-            text-align: center;
-        }
-    }
-
-    @media (max-width: 768px) {
-
-        .london,
-        .dhaka,
-        .ghana {
-            width: 80%;
-            margin: 10px auto;
-            text-align: center;
-            padding-right: 55px !important;
-        }
-    }
-
-    @media (max-width: 576px) {
-
-        .london,
-        .dhaka,
-        .ghana {
-            width: 100%;
-            margin: 0px auto;
-            text-align: center;
-            margin-bottom: 0px !important;
-            padding-top: 23px !important;
-            background-color: rgb(0 0 0 / 94%) !important;
-
-        }
-
-        .background-img {
-            background-image: url(http://192.168.1.150/ambalaitweb/nur/public/img/demo/ambalait-office-world-map (1).jpg) !important;
-            padding-top: 0px;
-            margin-top: 0px;
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
-            position: relative;
-            padding: 116px !important;
-            margin-bottom: 25px;
-        }
-    }
-
-    .shadow {
-        box-shadow: 1px 0rem 0rem rgba(0, 0, 0, 0.15) !important;
-    }
-
+    /* Social Icons */
     .social-icons-container {
-        display: flex;
-        flex-direction: column;
-        /* Stack icons vertically */
-        align-items: center;
-        /* Center the icons horizontally */
-        /* gap: 10px; */
-        /* Adds space between icons */
+        gap: 15px !important;
     }
 
     .social-icon {
-        width: 40px;
-        height: 35px;
-        border-radius: 50%;
-        object-fit: cover;
-        transition: transform 0.3s ease;
-        filter: grayscale(100%);
+        width: 40px !important;
+        height: 40px !important;
+        border-radius: 50% !important;
+        object-fit: cover !important;
+        transition: transform 0.3s ease, filter 0.3s ease !important;
+        filter: grayscale(100%) !important;
+        background: white !important;
+        padding: 5px !important;
     }
 
     .social-icon:hover {
-        transform: scale(1.1);
-        filter: grayscale(0%);
+        transform: scale(1.1) !important;
+        filter: grayscale(0%) !important;
     }
 
-
-    .shadow-left {
-        position: relative;
+    /* Divider */
+    .footer-divider {
+        background-color: #ffffff !important;
+        height: 1px !important;
+        width: 100% !important;
+        margin: 1.5rem 0 !important;
     }
 
-    .shadow-left::before {
-        content: '';
-        position: absolute;
-        left: -5px;
-        top: 0;
-        height: 97%;
-        border-radius: 101px;
-        width: .5px;
-        background: #2125293b;
-    }
-
-    @media (max-width: 576px) {
-        .social-icons-container {
-            flex-direction: row !important;
-            /* Change to horizontal layout on mobile */
-            justify-content: center !important;
-            /* Center the icons horizontally */
-        }
-
-        .social-icon {
-            margin: 0 5px !important;
-            /* Adds horizontal spacing between icons */
-        }
-    }
-
-    .terms ul {
-        padding-left: 0rem !important;
+    /* Copyright Section */
+    .copyright {
+        background-color: #001b36 !important;
+        padding: 10px 0 !important;
+        font-size: 0.85rem !important;
     }
 </style>

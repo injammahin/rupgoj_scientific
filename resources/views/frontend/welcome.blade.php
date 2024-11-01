@@ -16,7 +16,7 @@
         <div class="container">
            
                 <!-- About Section -->
-                <div class="about top ambala-section" data-aos="fade-up" data-aos-duration="1000">
+                <div class="about top ambala-section " data-aos="fade-up" data-aos-duration="1000">
                     <div>
                         <div class="row align-items-center">
                 
@@ -46,11 +46,11 @@
                             <div class="image-column col-md-6 col-sm-12">
                                 <div class="inner-column parallax-image">
                                     <div class="image">
-                                        <img src="{{ asset('/img/home/about.webp') }}" alt="About Us Image" class="about-img" style="height: 400px !imporrtant;width:auto;">
+                                        <img src="{{ asset('/img/home/Untitled design (2).png') }}" alt="About Us Image" class="about-img spinning-image">
                                     </div>
                                 </div>
                             </div>
-                
+                         
                         </div>
                     </div>
                 </div>
@@ -142,7 +142,7 @@
                        color: #ffffff;
                        font-size: 2rem;
                        position: absolute;
-                       top: -80px;
+                       top: -85px;
                        left: 34%;
                        transform: translateX(-50%);
                        transition: transform 0.3s ease-out;
@@ -189,7 +189,7 @@
                        color: #123456 !important;
                        font-size: 1.25rem;
                        font-weight: bold;
-                    margin-top: 7rem;
+                    margin-top: 5.5rem;
                     }
                     .services-section p {
                      margin: 13px 0 14px !important;
@@ -214,10 +214,9 @@
                    <div class="col-lg-4 col-sm-6 mb-4 fade-in fade-in-down">
                        <div class="service-card p-4 text-center">
                            <div class="icon-wrapper parallax-icon">
-                               <i class="fas fa-camera"></i>
-                           </div>
+                            <i class="fa-solid fa-star"></i>                           </div>
                            <div class="card-body">
-                               <h3 class="card-title">Usability Testing</h3>
+                               <h3 class="card-title">Committed to Quality</h3>
                                <p>
                                 Since the qualities of products are vital to our customers’ success, and also a key determinant of our own success, we are committed to quality in all aspects of our activities. RUPGONJ SCIENTIFICS commitment to supply the highest standards of quality products.</p>
                            </div>
@@ -227,10 +226,9 @@
                    <div class="col-lg-4 col-sm-6 mb-4 fade-in fade-in-right">
                        <div class="service-card p-4 text-center">
                            <div class="icon-wrapper parallax-icon">
-                               <i class="fas fa-chart-line"></i>
-                           </div>
+                            <i class="fa-regular fa-folder-open"></i>                        </div>
                            <div class="card-body">
-                               <h3 class="card-title">SEO Optimization</h3>
+                               <h3 class="card-title">2 in 1</h3>
                                <p>We don’t sell only products, we also provide a compact solution</p>
                            </div>
                        </div>
@@ -240,7 +238,7 @@
            <script>
                document.addEventListener('DOMContentLoaded', function () {
                    const observerOptions = {
-                       threshold: 0.3 // Trigger the animations when 30% of the element is visible
+                       threshold: 0.4// Trigger the animations when 30% of the element is visible
                    };
            
                    const fadeInObserver = new IntersectionObserver((entries) => {
@@ -269,166 +267,292 @@
                });
            </script>
             <!-- partner-->
-                <div class="main-section ambala-section" data-aos="fade-left" data-aos-duration="1000">
-                    <div>
-                        <div class=" text-center mb-5">
-                            <h3 class="rp_heading ">Our Partners</h3>
-                            <p class="ambala_sub_heading ">Our trusted partner in driving innovation with cutting-edge
-                                customized
-                                software solutions.
-
-                            </p>
-                        </div>
-                        <div class=" partners">
-                            <div class="row justify-content-center text-center">
-                                @foreach ($partners as $partner)
-                                    <div class="col-lg-2 col-md-4 col-sm-4 col-6 mb-4">
-                                        <div class="client-card">
-                                            <img src="{{ asset('media/partners/' . $partner->image) }}"
-                                                style="height: auto;width:auto !important;" alt="{{ $partner->name }}">
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            
-            <!-- revirew-->
-                <div class="about ambala-section" data-aos="fade-right" data-aos-duration="1000">
-                    <div class="main-section">
-                        <div class="">
-                            <div class=" text-center mb-5">
-                                <h3 class="ambala_heading ">Testimonials from Our Respected Clients
-                                </h3>
-                                <p class="ambala_sub_heading ">Trusted by leading brands, we deliver exceptional software
-                                    solutions that drive results.
-
-                                </p>
-                            </div>
-                        </div>
-                        <div class="container customr">
-                            <div class="owl-carousel owl-theme unique-testimonial-carousel">
-                                @foreach ($reviews as $review)
-                                    <div class="item">
-                                        <div class="unique-testimonial-block d-flex flex-column justify-content-between">
-                                            <span class="alt-font quote">“</span>
-                                            <p class="review-text">{!! $review->text !!}</p>
-                                            <div class="d-flex align-items-center justify-content-center author-info">
-                                                <img class="img-fluid rounded-circle me-3"
-                                                    src="{{ asset('media/review/' . $review->image) }}"
-                                                    alt="{{ $review->author }}" style="width: 50px; height: 50px;">
-                                                <div>
-                                                    <h6 class="mb-0 font-weight-bold">{{ $review->author }}</h6>
-                                                    <small>{{ $review->role }}</small>
-                                                    @if ($review->video_url)
-                                                        @php
-                                                            // Convert the YouTube URL to an embeddable format
-                                                            $embedUrl = str_replace(
-                                                                ['youtu.be/', 'watch?v='],
-                                                                'www.youtube.com/embed/',
-                                                                $review->video_url,
-                                                            );
-                                                        @endphp
-                                                        <i class="fa fa-play-circle play-icon-center"
-                                                            style="cursor: pointer; color: #FF0000; font-size: 1.2rem;"
-                                                            onclick="playReviewVideo('{{ $embedUrl }}')"></i>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                @foreach ($reviews as $review)
-                    @if ($review->video_url)
-                        @php
-                            // Convert the YouTube URL to an embeddable format
-                            $embedUrl = str_replace('youtu.be/', 'www.youtube.com/embed/', $review->video_url);
-                            $embedUrl = str_replace('watch?v=', 'embed/', $embedUrl);
-                        @endphp
-                        <div class="modal fade" id="youtubeModal{{ $review->id }}" tabindex="-1" role="dialog"
-                            aria-labelledby="youtubeModalLabel{{ $review->id }}" aria-hidden="true">
-                            <div class="modal-dialog modal-lg" role="document">
-                                <div class="modal-content">
-                                    <div class="" style="background: #000!important;">
-                                        <div class="embed-responsive embed-responsive-16by9">
-                                            <iframe class="embed-responsive-item" src="{{ $embedUrl }}"
-                                                allowfullscreen></iframe>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
-                    <!-- Video Modal -->
-                    <div class="modal fade" id="reviewVideoModal" tabindex="-1" role="dialog"
-                        aria-labelledby="reviewVideoModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg" role="document">
-                            <div class="modal-content">
-                                <div class="text-center">
-                                    <iframe id="reviewVideoIframe" width="100%" height="500" frameborder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowfullscreen></iframe>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-                <script>
-                    // Function to play video in the modal
-                    function playReviewVideo(videoUrl) {
-                        const reviewVideoIframe = document.getElementById('reviewVideoIframe');
-
-                        // Set the video URL with autoplay enabled
-                        reviewVideoIframe.src = `${videoUrl}?autoplay=1&rel=0`;
-
-                        // Show the modal
-                        $('#reviewVideoModal').modal('show');
-
-                        // Clear the video iframe when the modal is closed
-                        $('#reviewVideoModal').on('hidden.bs.modal', function() {
-                            reviewVideoIframe.src = ''; // Clear the src to stop the video
-                        });
+            <style>
+                    /* Section Styling */
+                    .main-section {
+                        overflow: hidden;
+                        background-color: #f7f7f7;
+                        padding: 50px 0;
+                        position: relative;
                     }
-
-                    // Initialize the review carousel (if using Owl Carousel)
-                    $(document).ready(function() {
-                        $(".unique-testimonial-carousel").owlCarousel({
-                            loop: true,
-                            margin: 10,
-                            nav: false,
-                            center: true,
-                            items: 1,
-                            dots: true,
-                            autoplay: true,
-                            autoplayTimeout: 3000,
-                            smartSpeed: 700,
-                            responsive: {
-                                0: {
-                                    items: 1
-                                },
-                                600: {
-                                    items: 3
-                                },
-                                1000: {
-                                    items: 3
-                                }
-                            }
-                        });
+            
+                    .rp_heading {
+                        font-size: 2rem;
+                        font-weight: bold;
+                        color: #4CAF50; /* Green for heading */
+                    }
+            
+                    .ambala_sub_heading {
+                        font-size: 1rem;
+                        color: #555;
+                    }
+            
+                    /* Continuous Scrolling Effect */
+                    .partners {
+                        overflow: hidden;
+                        white-space: nowrap;
+                        position: relative;
+                    }
+            
+                    .partners-row {
+                        display: inline-flex;
+                        animation: scroll-left 20s linear infinite;
+                    }
+            
+                    /* Keyframes for the scrolling effect */
+                    @keyframes scroll-left {
+                        0% {
+                            transform: translateX(0);
+                        }
+                        100% {
+                            transform: translateX(-50%);
+                        }
+                    }
+            
+                    /* Client card styling */
+                    .client-card {
+                        width: 150px;
+                        height: auto;
+                        margin: 0 15px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        overflow: hidden;
+                        transition: transform 0.3s ease;
+                    }
+            
+                    .client-card img {
+                        max-width: 100%;
+                        height: auto;
+                        transition: transform 0.3s ease;
+                    }
+            
+                    /* Zoom effect on hover */
+                    .client-card:hover img {
+                        transform: scale(1.2);
+                    }
+            
+                    /* Pause animation on hover */
+                    .partners-row:hover {
+                        animation-play-state: paused;
+                    }
+            </style>
+            <div class="main-section ambala-section bg-white" data-aos="fade-left" data-aos-duration="1000">
+                <div>
+                    <div class="text-center mb-5">
+                        <h3 class="rp_heading">Our Partners</h3>
+                        <p class="ambala_sub_heading">Our trusted partner in driving innovation with cutting-edge customized software solutions.</p>
+                    </div>
+                    <div class="partners">
+                        <div class="partners-row">
+                            <!-- First Set of Partner Logos -->
+                            @foreach ($partners as $partner)
+                                <div class="client-card">
+                                    <img src="{{ asset('media/partners/' . $partner->image) }}" alt="{{ $partner->name }}">
+                                </div>
+                            @endforeach
+                            <!-- Duplicate Set for Seamless Scrolling -->
+                            @foreach ($partners as $partner)
+                                <div class="client-card">
+                                    <img src="{{ asset('media/partners/' . $partner->image) }}" alt="{{ $partner->name }}">
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- revirew-->
+            <style>
+                    /* Styling the Testimonial Section */
+                    .about {
+                        padding: 50px 0;
+                        overflow: hidden;
+                    }
+            
+                    .rp_heading {
+                        font-size: 2.5rem;
+                        font-weight: bold;
+                        color: #4CAF50; /* Green heading */
+                    }
+            
+                    .ambala_sub_heading {
+                        font-size: 1.1rem;
+                        color: #666;
+                        margin-bottom: 2rem;
+                    }
+            
+                    /* Carousel styling */
+                    .unique-testimonial-carousel .item {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        padding: 20px;
+                    }
+            
+                    .unique-testimonial-block {
+                        max-width: 600px;
+                        background-color: #fff;
+                        border-radius: 15px;
+                        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                        padding: 30px;
+                        position: relative;
+                        overflow: hidden;
+                        transition: transform 0.3s;
+                        z-index: 1;
+                    }
+            
+                    .unique-testimonial-block:hover {
+                        transform: scale(1.05);
+                        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+                    }
+            
+                    .quote {
+                        font-size: 3rem;
+                        color: #4CAF50;
+                        position: absolute;
+                        top: 10px;
+                        left: 20px;
+                        opacity: 0.1;
+                        z-index: -1;
+                    }
+            
+                    .review-text {
+                        font-size: 1rem;
+                        color: #333;
+                        margin-bottom: 20px;
+                        line-height: 1.6;
+                    }
+            
+                    .author-info h6 {
+                        margin: 0;
+                        font-weight: bold;
+                    }
+            
+                    .author-info small {
+                        color: #777;
+                    }
+            
+                    /* Play button styling */
+                    .play-icon-center {
+                        cursor: pointer;
+                        color: #FF0000;
+                        font-size: 1.4rem;
+                        margin-left: 10px;
+                        transition: transform 0.3s;
+                    }
+            
+                    .play-icon-center:hover {
+                        transform: scale(1.2);
+                    }
+            
+                    /* Parallax effect */
+                    .about {
+                        background-attachment: fixed;
+                        background-size: cover;
+                    }
+            
+                    /* Animation effects */
+                    [data-aos="fade-right"] {
+                        transform: translateX(-50px);
+                        opacity: 0;
+                        transition: all 1s ease;
+                    }
+            
+                    [data-aos="fade-right"].aos-animate {
+                        transform: translateX(0);
+                        opacity: 1;
+                    }
+            </style> 
+            <div class="about ambala-section bg-white" data-aos="fade-right" data-aos-duration="1000">
+                <div class="container">
+                    <div class="text-center mb-5">
+                        <h3 class="rp_heading">Testimonials from Our Respected Clients</h3>
+                        <p class="ambala_sub_heading">Trusted by leading brands, we deliver exceptional software solutions that drive results.</p>
+                    </div>
+                    <div class="unique-testimonial-carousel owl-carousel owl-theme">
+                        @foreach ($reviews as $review)
+                            <div class="item" data-aos="fade-up" data-aos-duration="1000">
+                                <div class="unique-testimonial-block d-flex flex-column justify-content-between">
+                                    <span class="alt-font quote">“</span>
+                                    <p class="review-text">{!! $review->text !!}</p>
+                                    <div class="d-flex align-items-center justify-content-center author-info">
+                                        <img class="img-fluid rounded-circle me-3"
+                                             src="{{ asset('media/review/' . $review->image) }}"
+                                             alt="{{ $review->author }}" style="width: 50px; height: 50px;">
+                                        <div>
+                                            <h6 class="mb-0 font-weight-bold">{{ $review->author }}</h6>
+                                            <small>{{ $review->role }}</small>
+                                            @if ($review->video_url)
+                                                @php
+                                                    $embedUrl = str_replace(['youtu.be/', 'watch?v='], 'www.youtube.com/embed/', $review->video_url);
+                                                @endphp
+                                                <i class="fa fa-play-circle play-icon-center" onclick="playReviewVideo('{{ $embedUrl }}')"></i>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Video Modal -->
+            <div class="modal fade" id="reviewVideoModal" tabindex="-1" role="dialog" aria-labelledby="reviewVideoModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="text-center">
+                            <iframe id="reviewVideoIframe" width="100%" height="500" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+            <script>
+                AOS.init();
+            
+                // Function to play video in the modal
+                function playReviewVideo(videoUrl) {
+                    const reviewVideoIframe = document.getElementById('reviewVideoIframe');
+                    reviewVideoIframe.src = `${videoUrl}?autoplay=1&rel=0`;
+                    $('#reviewVideoModal').modal('show');
+            
+                    $('#reviewVideoModal').on('hidden.bs.modal', function () {
+                        reviewVideoIframe.src = '';
                     });
-                </script>
-           
+                }
+            
+                // Initialize the Owl Carousel for testimonials
+                $(document).ready(function () {
+                    $(".unique-testimonial-carousel").owlCarousel({
+                        loop: true,
+                        margin: 20,
+                        nav: false,
+                        center: true,
+                        items: 1,
+                        dots: true,
+                        autoplay: true,
+                        autoplayTimeout: 4000,
+                        smartSpeed: 800,
+                        responsive: {
+                            0: { items: 1 },
+                            600: { items: 2 },
+                            1000: { items: 3 }
+                        }
+                    });
+                });
+            </script>
+            
 
             <div class="industries-section ambala-section bg-white pt-0 pb-0 text-center" data-aos="fade-up"
                 data-aos-duration="1000">
                 <div>
                     <div class=" text-center mb-5">
-                        <h3 class="ambala_heading ">Industry we serve</h3>
+                        <h3 class="rp_heading ">Industry we serve</h3>
                         <p class="ambala_sub_heading ">We are committed to transforming industries with unique
                             customized
                             software solutions
@@ -512,30 +636,7 @@
                     </div>
                 </div>
             </div>
-                <div class=" award bg-white ambala-section text-center " data-aos="fade-right" data-aos-duration="1000">
-                    <div>
-                        <div class=" text-center mb-5">
-                            <h3 class="ambala_heading ">Innovative Tools for Superior Solutions</h3>
-                            <p class="ambala_sub_heading ">Emphasize the tools that enhance our development processes and
-                                deliver high-quality outcomes</p>
-                        </div>
-                    </div>
-                    <div class="row text-center wow fadeInUp" data-wow-delay=".2s"
-                        style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-                        @foreach ($technologies as $technology)
-                            <div class="col-6 col-md-2 border-end border-bottom">
-                                <div class="py-4 img-hover">
-                                    <div class="img-container">
-                                        <img class="image-70px"
-                                            src="{{ asset('media/technologies/' . $technology->image) }}"
-                                            alt="{{ $technology->name }}">
-                                        <div class="img-shade"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
+             
                 
            
         </div>
