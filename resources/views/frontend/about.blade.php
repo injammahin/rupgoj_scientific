@@ -131,7 +131,7 @@
                     </div>
 
                     <!-- IT Professionals -->
-                    <div class="col-md-4 col-lg-2 mb-4 wow fadeInUp" data-wow-delay=".6s">
+                    {{-- <div class="col-md-4 col-lg-2 mb-4 wow fadeInUp" data-wow-delay=".6s">
                         <div class="icon mb-3">
                             <i class="fas fa-user-tie fa-3x"></i>
                         </div>
@@ -139,7 +139,7 @@
                             <span class="countup">{{ $statistics['IT Professionals']->value ?? 0 }}</span>+
                         </h3>
                         <p class="center ambala_padding">IT Professionals</p>
-                    </div>
+                    </div> --}}
 
                     <!-- Projects Completed -->
                     <div class="col-md-4 col-lg-2 mb-4 wow fadeInUp" data-wow-delay=".8s">
@@ -296,7 +296,7 @@
                 opacity: 1;
             }
     </style> 
-    <div class="about ambala-section bg-white" data-aos="fade-right" data-aos-duration="1000">
+    <div class="about ambala-section " data-aos="fade-right" data-aos-duration="1000">
         <div class="container">
             <div class="text-center mb-5">
                 <h3 class="rp_heading">Testimonials from Our Respected Clients</h3>
