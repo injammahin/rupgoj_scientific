@@ -31,6 +31,7 @@ use App\Models\Setting;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ServiceTagRelatedBlogController;
 use App\Http\Controllers\StatisticController;
+use App\Http\Controllers\MainProductController;
 
 
 
@@ -166,6 +167,17 @@ Route::get('/services/digital-marketing-agency', [PageController::class, 'showDi
     Route::get('/blog', [PageController::class, 'blog'])->name('blog');
     Route::get('/blogs/{blog:slug}', [PageController::class, 'showBlog'])->name('blogs.show');
     Route::post('/blogs/{blog}/comment', [PageController::class, 'storeComment'])->name('blogs.comment');
+
+    Route::get('/main-products', [MainProductController::class, 'showMainProducts'])->name('main_products.index');
+
+    // Show sub-products under a specific main product
+    Route::get('/main-products/{main_product}', [MainProductController::class, 'showSubProducts'])
+        ->name('main_products.show');
+    
+    // Show detailed view of a sub-product
+    Route::get('/sub-products/{sub_product}', [NewProductController::class, 'show'])
+        ->name('sub_products.show');
+
 });
 
 
@@ -419,5 +431,6 @@ Route::get('/backend/blogs/manage-categories-tags', [PageController::class, 'man
 Route::get('backend/manage-tags', [PageController::class, 'manageTags'])->name('manage-tags');
 
 Route::post('/storeVideo', [SliderController::class, 'storeVideo'])->name('sliders.storeVideo');
+Route::resource('main_products', MainProductController::class)->except(['show']);
 
 });

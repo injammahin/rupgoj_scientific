@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\Models\NewProduct;
 use App\Models\MainSetting;
-
+use App\Models\MainProduct;
 class AppServiceProvider extends ServiceProvider
 {
     public function boot()
@@ -15,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
         View::composer('*', function ($view) {
             $newProducts = NewProduct::all();
             $main_settings = MainSetting::all()->pluck('value', 'key')->toArray(); // Fetch all settings as key-value pairs
-
+            $view->with('mainProducts', MainProduct::all());
             // Pass settings and site logo to views
             $view
                  ->with('newProducts', $newProducts)

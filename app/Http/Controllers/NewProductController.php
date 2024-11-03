@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use App\Models\NewProductModule;
+use App\Models\MainProduct;
 
 class NewProductController extends Controller
 {
@@ -19,41 +20,45 @@ class NewProductController extends Controller
 
     public function create()
     {
-        return view('backend.new_products.create');
+        $main_products = MainProduct::all(); // Fetch all main products
+        return view('backend.new_products.create', compact('main_products'));
     }
 
    
     public function store(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'short_description' => 'nullable|string',
-            'description' => 'nullable|string',
-            'thumb_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
-            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
-            'brochure' => 'nullable|mimes:pdf|max:10000',
-            'video_url' => 'nullable|string|max:255',
-            'navmenu_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048'
-        ]);
+{
+    $request->validate([
+        'main_product_id' => 'required|exists:main_products,id', // Ensure main_product_id is valid
+        'name' => 'required|string|max:255',
+        'short_description' => 'nullable|string',
+        'description' => 'nullable|string',
+        'thumb_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+        'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+        'brochure' => 'nullable|mimes:pdf|max:10000',
+        'video_url' => 'nullable|string|max:255',
+        'navmenu_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048'
+    ]);
 
-        $newProduct = new NewProduct();
-        $newProduct->name = $request->name;
-        $newProduct->slug = Str::slug($request->name);
-        $newProduct->short_description = $request->short_description;
-        $newProduct->description = $request->description;
+    $newProduct = new NewProduct();
+    $newProduct->main_product_id = $request->main_product_id; // Assign main product ID here
+    $newProduct->name = $request->name;
+    $newProduct->slug = Str::slug($request->name);
+    $newProduct->short_description = $request->short_description;
+    $newProduct->description = $request->description;
 
-        $newProduct->thumb_image = $this->uploadFile($request, 'thumb_image', 'new_product/thumbs');
-        $newProduct->image = $this->uploadFile($request, 'image', 'new_product/images');
-        $newProduct->logo = $this->uploadFile($request, 'logo', 'new_product/logos');
-        $newProduct->brochure = $this->uploadFile($request, 'brochure', 'new_product/brochures');
-        $newProduct->navmenu_image = $this->uploadFile($request, 'navmenu_image', 'new_product/navmenu_images');
+    $newProduct->thumb_image = $this->uploadFile($request, 'thumb_image', 'new_product/thumbs');
+    $newProduct->image = $this->uploadFile($request, 'image', 'new_product/images');
+    $newProduct->logo = $this->uploadFile($request, 'logo', 'new_product/logos');
+    $newProduct->brochure = $this->uploadFile($request, 'brochure', 'new_product/brochures');
+    $newProduct->navmenu_image = $this->uploadFile($request, 'navmenu_image', 'new_product/navmenu_images');
 
-        $newProduct->video_url = $this->formatYoutubeUrl($request->video_url);
-        $newProduct->save();
+    $newProduct->video_url = $this->formatYoutubeUrl($request->video_url);
+    $newProduct->save();
 
-        return redirect()->route('backend.new_products.index')->with('success', 'New Product created successfully.');
-    }
+    return redirect()->route('backend.new_products.index')->with('success', 'New Product created successfully.');
+}
+
 
  
     private function formatYoutubeUrl($url)
@@ -68,40 +73,43 @@ class NewProductController extends Controller
     public function edit($id)
     {
         $new_product = NewProduct::findOrFail($id);
-        return view('backend.new_products.edit', compact('new_product'));
+        $main_products = MainProduct::all(); // Fetch all main products
+        return view('backend.new_products.edit', compact('new_product', 'main_products'));
     }
-
-   
+    
     public function update(Request $request, $id)
-    {
-        $new_product = NewProduct::findOrFail($id);
+{
+    $new_product = NewProduct::findOrFail($id);
 
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'short_description' => 'nullable|string',
-            'description' => 'nullable|string',
-            'thumb_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
-            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
-            'brochure' => 'nullable|file|mimes:pdf|max:10000',
-            'navmenu_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
-        ]);
+    $request->validate([
+        'main_product_id' => 'required|exists:main_products,id', // Validate main product ID
+        'name' => 'required|string|max:255',
+        'short_description' => 'nullable|string',
+        'description' => 'nullable|string',
+        'thumb_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+        'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+        'brochure' => 'nullable|file|mimes:pdf|max:10000',
+        'navmenu_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+    ]);
 
-        $new_product->name = $request->name;
-        $new_product->slug = Str::slug($request->name);
-        $new_product->short_description = $request->short_description;
-        $new_product->description = $request->description;
+    $new_product->main_product_id = $request->main_product_id; // Save selected main product ID
+    $new_product->name = $request->name;
+    $new_product->slug = Str::slug($request->name);
+    $new_product->short_description = $request->short_description;
+    $new_product->description = $request->description;
 
-        $new_product->thumb_image = $this->updateFile($request, 'thumb_image', 'new_product/thumbs', $new_product->thumb_image);
-        $new_product->image = $this->updateFile($request, 'image', 'new_product/images', $new_product->image);
-        $new_product->logo = $this->updateFile($request, 'logo', 'new_product/logos', $new_product->logo);
-        $new_product->brochure = $this->updateFile($request, 'brochure', 'new_product/brochures', $new_product->brochure);
-        $new_product->navmenu_image = $this->updateFile($request, 'navmenu_image', 'new_product/navmenu_images', $new_product->navmenu_image);
+    $new_product->thumb_image = $this->updateFile($request, 'thumb_image', 'new_product/thumbs', $new_product->thumb_image);
+    $new_product->image = $this->updateFile($request, 'image', 'new_product/images', $new_product->image);
+    $new_product->logo = $this->updateFile($request, 'logo', 'new_product/logos', $new_product->logo);
+    $new_product->brochure = $this->updateFile($request, 'brochure', 'new_product/brochures', $new_product->brochure);
+    $new_product->navmenu_image = $this->updateFile($request, 'navmenu_image', 'new_product/navmenu_images', $new_product->navmenu_image);
 
-        $new_product->save();
+    $new_product->save();
 
-        return redirect()->route('backend.new_products.index')->with('success', 'Product updated successfully.');
-    }
+    return redirect()->route('backend.new_products.index')->with('success', 'Product updated successfully.');
+}
+
 
    
     public function destroy($id)

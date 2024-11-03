@@ -16,6 +16,19 @@
                         @csrf
                         @method('PUT')
 
+                        <!-- Main Product Selection -->
+                        <div class="mb-3">
+                            <label for="main_product_id" class="form-label">Main Product</label>
+                            <select name="main_product_id" id="main_product_id" class="form-control" required>
+                                <option value="">Select Main Product</option>
+                                @foreach($main_products as $main_product)
+                                    <option value="{{ $main_product->id }}" {{ $new_product->main_product_id == $main_product->id ? 'selected' : '' }}>
+                                        {{ $main_product->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
                         <!-- Product Name -->
                         <div class="mb-3">
                             <label for="name" class="form-label">Product Name</label>

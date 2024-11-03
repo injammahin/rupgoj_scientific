@@ -10,6 +10,9 @@
                     <a href="{{ route('backend.new_products.create') }}" class="btn btn-sm btn-success ml-auto">
                         <i class="fas fa-plus"></i> Add New Product
                     </a>
+                    <a href="{{ route('backend.main_products.create') }}" class="btn btn-sm btn-success ml-auto">
+                        <i class="fas fa-plus"></i> create main Product
+                    </a>
                 </div>
 
                 <div class="card-body">

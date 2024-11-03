@@ -31,5 +31,16 @@ class NewProduct extends Model
     {
         return $this->hasMany(NewProductModule::class);
     }
-    
+    // public function mainProduct()
+    // {
+    //     return $this->belongsTo(MainProduct::class, 'main_product_id');
+    // }
+    // In NewProduct.php
+// NewProduct model
+public function mainProduct()
+{
+    return $this->belongsTo(MainProduct::class, 'main_product_id');
+}
+
+
 }

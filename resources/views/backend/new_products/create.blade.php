@@ -16,6 +16,16 @@
                     <form id="productForm" action="{{ route('backend.new_products.store') }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
+                        <div class="mb-3">
+                            <label for="main_product_id" class="form-label">Main Product</label>
+                            <select name="main_product_id" id="main_product_id" class="form-control" required>
+                                <option value="">Select Main Product</option>
+                                @foreach($main_products as $main_product)
+                                    <option value="{{ $main_product->id }}">{{ $main_product->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        
 
                         <div class="mb-3">
                             <label for="name" class="form-label">Product Name</label>
