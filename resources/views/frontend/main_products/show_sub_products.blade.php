@@ -12,9 +12,9 @@
                     <!-- Thumbnail Image -->
                     <div class="parallax-image-wrapper">
                         @if ($subProduct->thumb_image && file_exists(public_path('media/new_product/thumbs/' . $subProduct->thumb_image)))
-                            <img src="{{ asset('media/new_product/thumbs/' . $subProduct->thumb_image) }}" class="card-img-top img-fluid rounded-top parallax-image" alt="{{ $subProduct->name }}">
+                            <img src="{{ asset('media/new_product/thumbs/' . $subProduct->thumb_image) }}" class="card-img-top img-fluid parallax-image" alt="{{ $subProduct->name }}">
                         @else
-                            <img src="{{ asset('media/default-thumb.png') }}" class="card-img-top img-fluid rounded-top parallax-image" alt="Default Thumbnail">
+                            <img src="{{ asset('media/default-thumb.png') }}" class="card-img-top img-fluid parallax-image" alt="Default Thumbnail">
                         @endif
                     </div>
 
@@ -35,14 +35,15 @@
 
 @section('styles')
 <style>
-    /* Styling for the card */
+    /* Set consistent size for cards */
     .parallax-card {
         background: #f7f7f7;
         border-radius: 15px;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         position: relative;
         overflow: hidden;
-        min-height: 28rem;
+        width: 100%; /* Full width of column */
+        min-height: 400px; /* Fixed height for card */
     }
 
     .parallax-card:hover {
@@ -50,17 +51,26 @@
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
     }
 
-    /* Parallax Image Wrapper */
+    /* Parallax Image Wrapper with Fixed Height */
     .parallax-image-wrapper {
         overflow: hidden;
-        height: 200px;
+        height: 200px; /* Fixed height for image container */
         position: relative;
+        width: 100%;
     }
 
+    /* Image styling with zoom-out effect */
     .parallax-image {
-        transition: transform 0.5s ease-out;
         width: 100%;
-        height: auto;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease-out;
+        transform: scale(1.1); /* Start with a slight zoom-in */
+    }
+
+    /* Zoom out on hover */
+    .parallax-card:hover .parallax-image {
+        transform: scale(1); /* Zoom out to original size */
     }
 
     /* Card text styling */
@@ -123,7 +133,7 @@
             const parallaxImages = document.querySelectorAll('.parallax-image');
 
             parallaxImages.forEach(image => {
-                const parallaxFactor = 0.2; // Adjust this to control the strength of the parallax effect
+                const parallaxFactor = 0.0; // Adjust this to control the strength of the parallax effect
                 image.style.transform = `translateY(${scrollY * parallaxFactor}px)`;
             });
         });
